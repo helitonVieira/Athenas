@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TransacoesPage
+  },
+  {
+    path: 'transacoes-form',
+    loadChildren: () => import('./transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)
   }
 ];
 

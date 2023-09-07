@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Meu Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col col="9">
+      <ion-card>
+        <ion-list *ngFor="let p of usuario">
+          <ion-row>
+            <ion-col>
+              <ion-avatar>
+                <img class="img" [src]="p.img" />
+              </ion-avatar>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Nome</ion-label>
+                <ion-input>{{p.nome}}</ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input>{{p.email}}</ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">CPF</ion-label>
+                <ion-input>{{p.cpf}}</ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+    <ion-col col="3">
+      <ion-card>
+        <ion-row>
+          <ion-col>
+            <p>Seu plano</p>
+            <ion-avatar>
+              <img class="img" src="..\assets\fotoPessoa.jpeg" />
+            </ion-avatar>
+            <p>Trial (30) Dias</p>
+            <br>
+            <p>Aproveite o máximo da nossa solução, assine já e garanta uma experiencia completa</p>
+          </ion-col>
+          <ion-col>
+            <ion-avatar>
+              <img class="img" src="..\assets\fotoPessoa.jpeg" />
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+
+        <ion-button expand="block" fill="outline" (click)="showTabelaPreco()" >
+          <ion-text>SEJA PREMIUM</ion-text>
+        </ion-button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

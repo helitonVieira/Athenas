@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Transacoes } from './shared/transacoes';
+import { TransacoesService } from './service/transacoes.service';
+
 
 @Component({
   selector: 'app-transacoes',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransacoesPage implements OnInit {
 
-  constructor() { }
+  seachTerm: String;
+  transacoes: Transacoes[];
 
-  ngOnInit() {
+
+  constructor(private transacoesService: TransacoesService) { }
+
+  ngOnInit(): void {
+    this.transacoesService.read().subscribe(transacoes => {
+      this.transacoes = transacoes
+    })
   }
+
+  doSerchClear() {
+    this.ngOnInit();
+  }
+
+  async doSerchBarChange($event: any) {
+    const value = $event.target.value;
+    if (value && value.length >= 2) {
+      this.transacoes = await this.contactService.filter(value);
+    }
+  }
+
 
 }

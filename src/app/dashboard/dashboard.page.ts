@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import chartJs from 'chart.js/auto';
 
 @Component({
@@ -133,7 +134,26 @@ export class DashboardPage implements OnInit {
   }
 
 
-  constructor() {
+
+
+ public urlConfig:'/configuracoes';
+
+
+  casa(){
+    this.navCtrl.navigateForward('alert');
+  }
+  cartao(){
+
+  }
+  compras(){
+
+  }
+  energia(){
+
+  }
+
+
+  constructor(private navCtrl:NavController) {
   }
 
 

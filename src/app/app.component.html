@@ -5,6 +5,12 @@
         <ion-list id="inbox-list">
           <ion-list-header>Athenas</ion-list-header>
           <ion-note>athenassuporte@athenas.com</ion-note>
+          <ion-button color="light" (click)="showConfig()">
+            <ion-avatar>
+              <img class="img"  src="..\assets\fotoPessoa.jpeg"/>
+            </ion-avatar>
+            {{ nome }}
+          </ion-button>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
@@ -15,17 +21,32 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list id="labels-list">
-         
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of labels; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-              routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+      
 
+        <ion-list id="labels-list">
+
+         
+            <ion-item (click)="showAtributosConfig()" >
+              <ion-icon aria-hidden="true" slot="start" [ios]="'settings-outline'" [md]="'settings-sharp'"></ion-icon>
+              <ion-label><b>Configurações</b></ion-label>
+            </ion-item>           
+
+            <ion-list *ngIf="atributoConfig">
+              <ion-item  (click)="showMeuPerfil()">
+                <ion-label>Meu perfil</ion-label>
+              </ion-item>
+              <ion-item (click)="showConfiguracoes()">
+                <ion-label>Configurações</ion-label>
+              </ion-item>
+            </ion-list>
+
+            <ion-item>
+              <ion-icon aria-hidden="true" slot="start" [ios]="'help-outline'" [md]="'help-sharp'"></ion-icon>
+              <ion-label><b>Central de ajuda</b></ion-label>
+            </ion-item>
+          <!--</ion-menu-toggle>-->
+        </ion-list>
+     
 
         <!--    <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>

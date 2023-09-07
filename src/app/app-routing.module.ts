@@ -15,10 +15,11 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
-  {
-    path: 'transacoes',
-    loadChildren: () => import('./transacoes/transacoes.module').then( m => m.TransacoesPageModule)
-  },
+
+  {  path: 'transacoes', loadChildren: () => import('./transacoes/transacoes.module').then( m => m.TransacoesPageModule)},
+  {  path: 'transacoes/new', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
+  {  path: 'transacoes/edit/:id', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
+  
   {
     path: 'contas-bancarias',
     loadChildren: () => import('./contas-bancarias/contas-bancarias.module').then( m => m.ContasBancariasPageModule)
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'calendario-financeiro',
     loadChildren: () => import('./calendario-financeiro/calendario-financeiro.module').then( m => m.CalendarioFinanceiroPageModule)
+  },
+  {
+    path: 'configuracoes',
+    loadChildren: () => import('./configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
   }
 ];
 

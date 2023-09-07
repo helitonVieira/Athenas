@@ -34,55 +34,72 @@
         <ion-card-title class="valores">R$ 0,00</ion-card-title>
       </ion-card>
     </ion-col>
-</ion-row>
-<h1>graficos</h1>
-<ion-row>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Receita x Despesas</ion-card-header>
-      <ion-card-content>
-        <canvas #barCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Evolução do Fluxo de caixa</ion-card-header>
-      <ion-card-content>
-        <canvas #lineCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Despesas por categoria</ion-card-header>
-      <ion-card-content>
-        <canvas #pieCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-</ion-row>
+  </ion-row>
+  <h1>graficos</h1>
+  <ion-row>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Receita x Despesas</ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Evolução do Fluxo de caixa</ion-card-header>
+        <ion-card-content>
+          <canvas #lineCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Despesas por categoria</ion-card-header>
+        <ion-card-content>
+          <canvas #pieCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
-<ion-row>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Receita x Despesas</ion-card-header>
-      <ion-card-content>
-        <canvas #doughnutCanvas></canvas>
-      </ion-card-content>
-    </ion-card>
-  </ion-col>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Receita x Despesas</ion-card-header>
-    </ion-card>
-  </ion-col>
-  <ion-col col="6">
-    <ion-card>
-      <ion-card-header>Lembretes</ion-card-header>
-    </ion-card>
-  </ion-col>
-</ion-row>
+  <ion-row>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Receita x Despesas</ion-card-header>
+        <ion-card-content>
+          <canvas #doughnutCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Receita x Despesas</ion-card-header>
+
+        <ion-list>
+          <!--<ion-menu-toggle auto-hide="false" *ngFor="let p of categoria; let i = index"> -->
+          <ion-item [routerLink]="['/transacoes']">
+            <ion-text>Casa</ion-text>
+          </ion-item>
+          <ion-item [routerLink]="['/transacoes']">
+            <ion-text>Cartão</ion-text>
+          </ion-item>
+          <ion-item [routerLink]="['/transacoes']">
+            <ion-text>Compras</ion-text>
+          </ion-item>
+          <ion-item [routerLink]="['/transacoes']">
+            <ion-text>Energia</ion-text>
+          </ion-item>
+          <!-- </ion-menu-toggle> -->
+        </ion-list>
+
+      </ion-card>
+    </ion-col>
+    <ion-col col="6">
+      <ion-card>
+        <ion-card-header>Lembretes</ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
 </ion-grid>
-
