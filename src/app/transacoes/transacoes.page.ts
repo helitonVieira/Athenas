@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transacoes } from './shared/transacoes';
 import { TransacoesService } from './service/transacoes.service';
-
-
 @Component({
   selector: 'app-transacoes',
   templateUrl: './transacoes.page.html',
@@ -10,9 +8,9 @@ import { TransacoesService } from './service/transacoes.service';
 })
 export class TransacoesPage implements OnInit {
 
-  seachTerm: String;
+  searchTerm: String;
   transacoes: Transacoes[];
-
+  textoBuscar = '';
 
   constructor(private transacoesService: TransacoesService) { }
 
@@ -22,15 +20,8 @@ export class TransacoesPage implements OnInit {
     })
   }
 
-  doSerchClear() {
-    this.ngOnInit();
-  }
-
-  async doSerchBarChange($event: any) {
-    const value = $event.target.value;
-    if (value && value.length >= 2) {
-      this.transacoes = await this.contactService.filter(value);
-    }
+  busca(event){
+    this.textoBuscar = event.detail.value;
   }
 
 

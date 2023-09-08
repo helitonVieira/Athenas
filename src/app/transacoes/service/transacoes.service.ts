@@ -29,24 +29,6 @@ export class TransacoesService {
     );
   }
 
-  async filter(text: string) {
-    const sql = 'select * from transacoes where name like ?';
-    const data = [`%${text}%`];
-    const result = await this.db.executeSQL(sql, data);
-    const contacts = this.fillContacts(result.rows);
-    return contacts;
-  }
-
-  private fillContacts(rows: any) {
-    const contacts: Contact[] = [];
-
-    for (let i = 0; i < rows.length; i++) {
-      const item = rows.item(i);
-      const contact = new Contact();
-      contact.id = item.id;
-      contact.name = item.name;
-      contacts.push(contact);
-    }
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, "X", {

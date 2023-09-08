@@ -2,14 +2,19 @@
   <ion-toolbar>
     <ion-title>Transacões</ion-title>
   </ion-toolbar>
+
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+
+  <ion-searchbar animated
+              (ionChange) = "busca( $event )">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-searchbar placeholder="Pesquisar"
-    (ionClear)="doSerchClear()"
-    (ionChange)="doSerchBarChange($event)">
-  </ion-searchbar>
+
 
   <ion-list>
     <ion-item>
@@ -20,17 +25,17 @@
       <ion-label>Valor</ion-label>
     </ion-item>
 
-    <ion-item-sliding *ngFor="let transacoes of transacoes">
+    <ion-item-sliding  *ngFor="let transacao of transacoes | filtrozz: textoBuscar: 'descricao'">
       <ion-item>
-        <ion-label>{{transacoes.data}}</ion-label>
-        <ion-label>{{transacoes.descricao}}</ion-label>
-        <ion-label>{{transacoes.categoria}}</ion-label>
-        <ion-label>{{transacoes.conta}}</ion-label>
-        <ion-label>{{transacoes.valor}}</ion-label>
+        <ion-label>{{transacao.data}}</ion-label>
+        <ion-label>{{transacao.descricao}}</ion-label>
+        <ion-label>{{transacao.categoria}}</ion-label>
+        <ion-label>{{transacao.conta}}</ion-label>
+        <ion-label>{{transacao.valor}}</ion-label>
       </ion-item>
 
       <ion-item-options side="start">
-        <ion-item-option [routerLink]="['edit', transacoes.id]">
+        <ion-item-option [routerLink]="['edit', transacao.id]">
           <ion-icon slot="icon-only" name="create" color="secondary"></ion-icon>
         </ion-item-option>
        <!--<ion-item-option (click)="delete(transacoes)">-->

@@ -9,18 +9,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSnackBarModule } from  '@angular/material/snack-bar';
 
-
-
-
+import { PipesModule } from './pipes/pipes.module';
+//import { SearchbarPage } from './searchbar.page';
 
 @NgModule({
   declarations: [AppComponent],
 
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule ,
-    MatSnackBarModule],
+    MatSnackBarModule,
+    PipesModule
+    //,    SearchbarPage
+  ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 
