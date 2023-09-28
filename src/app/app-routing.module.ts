@@ -19,7 +19,7 @@ const routes: Routes = [
   {  path: 'transacoes', loadChildren: () => import('./transacoes/transacoes.module').then( m => m.TransacoesPageModule)},
   {  path: 'transacoes/new', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
   {  path: 'transacoes/edit/:id', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
-  
+
   {
     path: 'contas-bancarias',
     loadChildren: () => import('./contas-bancarias/contas-bancarias.module').then( m => m.ContasBancariasPageModule)

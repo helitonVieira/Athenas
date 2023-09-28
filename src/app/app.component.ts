@@ -30,6 +30,7 @@ export class AppComponent {
   public showConfig(){
     this.router.navigate(['/configuracoes'])
   }
+
   public showAtributosConfig(){
     if (this.atributoConfig==true) {
       this.atributoConfig =false;
@@ -46,7 +47,7 @@ export class AppComponent {
     this.router.navigate(['/configuracoes'])
   }
 
-  
+
 
   //public labels = ['Configura', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(private router: Router) {}

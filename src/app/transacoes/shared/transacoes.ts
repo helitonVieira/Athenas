@@ -4,6 +4,6 @@ export class Transacoes {
     descricao: string;
     categoria: string;
     conta: string;
-    valor: string;
+    valor: number;
 
 }
