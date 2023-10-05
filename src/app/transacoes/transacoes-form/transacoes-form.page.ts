@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-transacoes-form',
   templateUrl: './transacoes-form.page.html',
@@ -16,11 +15,10 @@ export class TransacoesFormPage implements OnInit {
   title: string = 'Nova Transação';
   transacoes: Transacoes;
 
-  msg: string ;
-  header:string;
-  collor:string;
-  isToastOpen:boolean = false;
-
+  msg: string;
+  header: string;
+  collor: string;
+  isToastOpen: boolean = false;
 
   constructor(
     private transacoesService: TransacoesService,
@@ -29,7 +27,7 @@ export class TransacoesFormPage implements OnInit {
     private toastCtrl: ToastController) { }
 
   ngOnInit() {
-    this.transacoes = new Transacoes();
+   this.transacoes = new Transacoes();
 
     const idParam = this.router.snapshot.paramMap.get('id');
     if (idParam) {
@@ -45,26 +43,40 @@ export class TransacoesFormPage implements OnInit {
   }
 
   updateProduct(): void {
-    this.transacoesService.update(this.transacoes).subscribe(() => {
-      this.transacoesService.showMessage("Transacão atualizada com sucesso!");
-      this.route.navigate(["/transacoes"]);
-    });
-  }
-
-  save(): void {
     this.transacoes.valor = Number(String(this.transacoes.valor).replace(',', '.'))// aceitar virgula
     try {
-      this.transacoesService.create(this.transacoes).subscribe(() => {
-       this.presentToast('Sucesso', 'Produto criado!', 'success')
+    this.transacoesService.update(this.transacoes).subscribe(() => {
+      this.presentToast('Sucesso', 'Trasação alterada!', 'success')
         this.route.navigate(['/transacoess'])//voltar para tela principal
       })
-
     } catch (error) {
-      this.presentToast('Erro', 'Produto criado!', 'danger')
+      this.presentToast('Erro', 'Transação edit!', 'danger')
     }
   }
 
-  setOpen(isOpen: boolean,header: string, msg: string, collor: string) {
+  create(): void {
+    //create
+    this.transacoes.valor = Number(String(this.transacoes.valor).replace(',', '.'))// aceitar virgula
+    try {
+      this.transacoesService.create(this.transacoes).subscribe(() => {
+        this.presentToast('Sucesso', 'Transação criada!', 'success')
+        this.route.navigate(['/transacoess'])//voltar para tela principal
+      })
+    } catch (error) {
+      this.presentToast('Erro', 'Erro ao tentar criar a Transação!', 'danger')
+    }
+  }
+
+  save(): void {
+
+    if (this.transacoes.id > 0) {
+      this.updateProduct();
+    } else {
+      this.create();
+    }
+  }
+
+  setOpen(isOpen: boolean, header: string, msg: string, collor: string) {
     this.isToastOpen = isOpen;
   }
 
@@ -74,18 +86,13 @@ export class TransacoesFormPage implements OnInit {
 
   async presentToast(header: string, msg: string, collor: string) {
     const toast = await this.toastCtrl.create({
-      header:header,
+      header: header,
       message: msg,
-      color:collor,
+      color: collor,
       duration: 3000,
       position: 'top',
     });
 
     await toast.present();
   }
-
-
-
-
-
 }

@@ -35,10 +35,32 @@ export class TransacoesPage implements OnInit {
   }
 
   executeDelete(transacoes : Transacoes): void {
+
+    try{
       this.transacoesService.delete(transacoes.id).subscribe(() => {
-      this.transacoesService.showMessage("Transacoes excluido com sucesso!");
-      this.router.navigate(["/transacoes"]);
+        this.presentToast('Excluir','Transacoes excluido com sucesso!', 'success');
+        const index = this.transacoes.indexOf(transacoes);
+        this.transacoes.splice(index,1);
+        // this.router.navigate(["/transacoes"]);
+      });
+
+    } catch (error){
+      this.presentToast('Erro', 'Erro ao tentar apagar a Transação!', 'danger')
+
+    }
+
+  }
+
+  async presentToast(header: string, msg: string, collor: string) {
+    const toast = await this.toastCtrl.create({
+      header: header,
+      message: msg,
+      color: collor,
+      duration: 3000,
+      position: 'top',
     });
+
+    await toast.present();
   }
 
   async delete(transacoes: Transacoes) {
