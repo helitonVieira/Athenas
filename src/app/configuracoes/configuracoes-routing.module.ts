@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'tabela-preco',
     loadChildren: () => import('./tabela-preco/tabela-preco.module').then( m => m.TabelaPrecoPageModule)
+  },
+  {
+    path: 'conta',
+    loadChildren: () => import('./conta-bancaria/conta/conta.module').then( m => m.ContaPageModule)
   }
 ];
 

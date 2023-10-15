@@ -1,69 +1,88 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Meu Perfil</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
   <ion-row>
     <ion-col col="9">
       <ion-card>
-        <ion-list *ngFor="let p of usuario">
+
+        <form (ngSubmit)="save()">
           <ion-row>
+
             <ion-col>
               <ion-avatar>
-                <img class="img" [src]="p.img" />
+                <img class="img" [src]="perfil.img" />
               </ion-avatar>
             </ion-col>
+
             <ion-col>
               <ion-item>
-                <ion-label position="floating">Nome</ion-label>
-                <ion-input>{{p.nome}}</ion-input>
+                <ion-label position="stacked">Nome</ion-label>
+                <ion-input autocapitalize="on" [(ngModel)]="perfil.nome" name="nome"></ion-input>
               </ion-item>
-
-             <!-- <ion-item>
-                <ion-label position="stacked">Categoria</ion-label>
-                <ion-input autocapitalize="on" [(ngModel)]="transacoes.categoria" name="categoria"></ion-input>
-              </ion-item>-->
-
 
               <ion-item>
-                <ion-label position="floating">Email</ion-label>
-                <ion-input>{{p.email}}</ion-input>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input autocapitalize="on" [(ngModel)]="perfil.email" name="email"></ion-input>
               </ion-item>
+
               <ion-item>
-                <ion-label position="floating">CPF</ion-label>
-                <ion-input>{{p.cpf}}</ion-input>
+                <ion-label position="stacked">CPF</ion-label>
+                <ion-input autocapitalize="on" [(ngModel)]="perfil.cpf" name="cpf"></ion-input>
               </ion-item>
+
+              <div class="ion-margin-vertical">
+                <ion-button type="submit" color="secondary" expand="block">ATUALIZAR DADOS</ion-button>
+              </div>
+
             </ion-col>
           </ion-row>
-        </ion-list>
+
+
+
+        </form>
+
       </ion-card>
     </ion-col>
     <ion-col col="3">
-      <ion-card>
-        <ion-row>
-          <ion-col>
-            <p>Seu plano</p>
-            <ion-avatar>
-              <img class="img" src="..\assets\fotoPessoa.jpeg" />
-            </ion-avatar>
-            <p>Trial (30) Dias</p>
-            <br>
-            <p>Aproveite o máximo da nossa solução, assine já e garanta uma experiencia completa</p>
-          </ion-col>
-          <ion-col>
-            <ion-avatar>
-              <img class="img" src="..\assets\fotoPessoa.jpeg" />
-            </ion-avatar>
-          </ion-col>
-        </ion-row>
 
-        <ion-button expand="block" fill="outline" (click)="showTabelaPreco()" >
-          <ion-text>SEJA PREMIUM</ion-text>
-        </ion-button>
+      <ion-card>
+        <form (ngSubmit)="showTabelaPreco()">
+
+          <ion-row>
+            <ion-col>
+              <p>Seu plano</p>
+
+              <ion-avatar>
+                <img class="img" src="..\assets\fotoPessoa.jpeg" />
+              </ion-avatar>
+
+              <p>Trial (30) Dias</p>
+              <br>
+              <p>Aproveite o máximo da nossa </p><br>
+              <p>solução, assine já e garanta uma </p><br>
+              <p>experiencia completa</p><br>
+            </ion-col>
+            <ion-col>
+              <ion-avatar>
+                <img class="img" src="..\assets\fotoPessoa.jpeg" />
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+
+          <div class="ion-margin-vertical">
+            <ion-button type="submit" color="secondary" expand="block">SEJA PREMIUM</ion-button>
+          </div>
+        </form>
       </ion-card>
     </ion-col>
-  </ion-row>
 
+  </ion-row>
 </ion-content>
