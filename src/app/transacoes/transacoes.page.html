@@ -37,7 +37,6 @@
 
     <ion-item-sliding *ngFor="let transacao of transacoes | filtrozz: textoBuscar: 'descricao'">
       <ion-item>
-        <ion-label>{{transacao.id}}</ion-label>
         <ion-label>{{transacao.data}}</ion-label>
         <ion-label>{{transacao.descricao}}</ion-label>
         <ion-label>{{transacao.categoria}}</ion-label>

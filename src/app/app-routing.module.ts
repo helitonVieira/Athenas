@@ -20,6 +20,11 @@ const routes: Routes = [
   {  path: 'transacoes/new', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
   {  path: 'transacoes/edit/:id', loadChildren: () => import('./transacoes/transacoes-form/transacoes-form.module').then( m => m.TransacoesFormPageModule)},
 
+ /* { path: 'conta', loadChildren: () => import('./contas-bancarias/contas-bancarias.module').then( m => m.ContasBancariasPageModule)},
+  {  path: 'conta/new', loadChildren: () => import('./contas-bancarias/contas-bancarias-form/contas-bancarias.module').then( m => m.ContasBancariasPageModule)},
+  {  path: 'conta/edit/:id', loadChildren: () => import('./contas-bancarias/contas-bancarias-form/contas-bancarias.module').then( m => m.ContasBancariasPageModule)},
+
+*/
   {
     path: 'contas-bancarias',
     loadChildren: () => import('./contas-bancarias/contas-bancarias.module').then( m => m.ContasBancariasPageModule)
