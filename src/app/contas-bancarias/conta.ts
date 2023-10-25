@@ -2,7 +2,7 @@ export class Conta {
         id: number;
         nome: string;
         instituicao: string;
-        saldoInicial: string;
+        saldoInicial: number;
         finalidade: string;
         status: boolean;
 }

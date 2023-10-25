@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ContasBancariasPage
+  },
+  {
+    path: 'conta',
+    loadChildren: () => import('./conta-form/conta/conta.module').then( m => m.ContaPageModule)
   }
 ];
 

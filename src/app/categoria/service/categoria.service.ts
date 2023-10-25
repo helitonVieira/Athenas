@@ -4,54 +4,54 @@ import { HttpClient } from "@angular/common/http";
 import { map, catchError } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ToastController } from '@ionic/angular';
-import { Conta } from '../conta';
+import { Categoria } from '../categoria';
+
 
 @Injectable({
   providedIn: 'root'
 })
+export class CategoriaService {
 
-export class ContaService {
-
-  baseUrl = "/api/contaBancaria";
+  baseUrl = "/api/categoria";
 
 constructor(private snackBar: MatSnackBar,
   private http:HttpClient,
   private toastCtrl: ToastController) { }
 
-read(): Observable<Conta[]> {
-  return this.http.get<Conta[]>(this.baseUrl).pipe(
+read(): Observable<Categoria[]> {
+  return this.http.get<Categoria[]>(this.baseUrl).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-readById(id: number): Observable<Conta> {
+readById(id: number): Observable<Categoria> {
   const url = `${this.baseUrl}/${id}`;
-  return this.http.get<Conta>(url).pipe(
+  return this.http.get<Categoria>(url).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-update(conta: Conta): Observable<Conta> {
-  const url = `${this.baseUrl}/${conta.id}`;
-  return this.http.put<Conta>(url, conta).pipe(
+update(categoria: Categoria): Observable<Categoria> {
+  const url = `${this.baseUrl}/${categoria.id}`;
+  return this.http.put<Categoria>(url, categoria).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-delete(id: number): Observable<Conta> {
+delete(id: number): Observable<Categoria> {
   const url = `${this.baseUrl}/${id}`;
-  return this.http.delete<Conta>(url).pipe(
+  return this.http.delete<Categoria>(url).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
 
-create(conta: Conta): Observable<Conta> {
-  return this.http.post<Conta>(this.baseUrl, conta).pipe(
+create(categoria: Categoria): Observable<Categoria> {
+  return this.http.post<Categoria>(this.baseUrl, categoria).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );

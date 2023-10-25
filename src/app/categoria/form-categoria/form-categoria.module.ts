@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CartaoCreditoPageRoutingModule } from './cartao-credito-routing.module';
+import { FormCategoriaPageRoutingModule } from './form-categoria-routing.module';
 
-import { CartaoCreditoPage } from './cartao-credito.page';
+import { FormCategoriaPage } from './form-categoria.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CartaoCreditoPageRoutingModule
+    FormCategoriaPageRoutingModule
   ],
-  declarations: [CartaoCreditoPage]
+  declarations: [FormCategoriaPage]
 })
-export class CartaoCreditoPageModule {}
+export class FormCategoriaPageModule {}

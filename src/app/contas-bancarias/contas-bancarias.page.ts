@@ -31,7 +31,7 @@ export class ContasBancariasPage implements OnInit {
   }
 
   public novo(){
-    this.router.navigate(['/contas/contas-form']);
+    this.router.navigate(['/contas-bancarias/new']);
   }
 
   executeDelete(contas : Conta): void {

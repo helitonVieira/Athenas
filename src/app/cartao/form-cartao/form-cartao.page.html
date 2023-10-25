@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="stacked">Id</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.id" name="id"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.nomCartao" name="nomCartao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Dia do Fechamento</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.diaFechamento" name="diaFechamento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Dia do Vencimento</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.diaVencimento" name="diaFechamento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Limite do Cartão Crédito</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.limiteCartaoCred" name="limiteCartaoCred"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Status</ion-label>
+      <ion-input autocapitalize="on" [(ngModel)]="cartao.status" name="cartao"></ion-input>
+    </ion-item>
+    <div class="ion-margin-vertical">
+      <ion-button type="submit" color="secondary" expand="block">Salvar</ion-button>
+      <ion-button (click)="cancel()" color="secondary" expand="block">Cancelar</ion-button>
+    </div>
+
+    </form>
+</ion-content>

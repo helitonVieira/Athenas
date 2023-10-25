@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { ContaService } from '../contas-bancarias/service/conta.service';
 import { Conta } from '../contas-bancarias/conta';
+import { Cartao } from '../cartao/cartao';
+import { CartaoService } from '../cartao/service/cartao.service';
+import { CategoriaService } from '../categoria/service/categoria.service';
+import { Categoria } from '../categoria/categoria';
 
 
 @Component({
@@ -16,17 +20,28 @@ export class ConfiguracoesPage implements OnInit {
   searchTerm: String;
   contas: Conta[];
   textoBuscar = '';
+  subtitulo = '';
+  cartao: Cartao[];
+  categoria: Categoria[];
+  //const cartaoVisible = document.querySelector('#btnCartaoVisible') as HTMLAnchorElement;
 
   constructor(
     private contaService: ContaService,
+    private cartaoService: CartaoService,
+    private categoriaService: CategoriaService,
      private router: Router,
      private toastCtrl: ToastController,
      private alertCtrl: AlertController) { }
 
   ngOnInit(): void {
-    this.contaService.read().subscribe(contas => {
-      this.contas = contas
-    })
+    this.subtitulo = 'Configuração Conta Bancaria';
+   //<HTMLInputElement>document.querySelector('#btnCartaoVisible').checkVisibility;
+   this.cartao = [];
+    this.categoria = [];
+    this.contas = [];
+
+
+    this.buscaConta();
   }
 
   busca(event){
@@ -35,6 +50,49 @@ export class ConfiguracoesPage implements OnInit {
 
   public novo(){
     this.router.navigate(['/contas/contas-form']);
+  }
+  public buscaConta(){
+    this.cartao = [];
+    this.categoria = [];
+    this.subtitulo = 'Configuração Conta Bancaria';
+    this.contaService.read().subscribe(contas => {
+      this.contas = contas
+    })
+  }
+  public buscaCartao(){
+    this.contas = [];
+    this.categoria = [];
+    this.subtitulo = 'Configuração Cartão Credito';
+    this.cartaoService.read().subscribe(cartao => {
+      this.cartao = cartao
+    })
+  }
+  public buscaCorretora(){
+    this.cartao = [];
+    this.contas = [];
+    this.categoria = [];
+    this.subtitulo = 'Configuração Corretora';
+    this.contaService.read().subscribe(contas => {
+      this.contas = contas
+    })
+  }
+  public buscaCategoria(){
+    this.cartao = [];
+    this.contas = [];
+    this.subtitulo = 'Configuração Categoria';
+    this.categoriaService.read().subscribe(categoria => {
+      this.categoria = categoria
+    })
+  }
+
+  public buscaNotificacao(){
+    this.cartao = [];
+    this.contas = [];
+    this.categoria = [];
+    this.subtitulo = 'Configuração Categoria';
+    this.contaService.read().subscribe(contas => {
+      this.contas = contas
+    })
   }
 
   executeDelete(contas : Conta): void {

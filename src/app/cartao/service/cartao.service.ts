@@ -4,54 +4,53 @@ import { HttpClient } from "@angular/common/http";
 import { map, catchError } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ToastController } from '@ionic/angular';
-import { Conta } from '../conta';
+import { Cartao } from '../cartao';
 
 @Injectable({
   providedIn: 'root'
 })
+export class CartaoService {
 
-export class ContaService {
-
-  baseUrl = "/api/contaBancaria";
+  baseUrl = "/api/cartao";
 
 constructor(private snackBar: MatSnackBar,
   private http:HttpClient,
   private toastCtrl: ToastController) { }
 
-read(): Observable<Conta[]> {
-  return this.http.get<Conta[]>(this.baseUrl).pipe(
+read(): Observable<Cartao[]> {
+  return this.http.get<Cartao[]>(this.baseUrl).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-readById(id: number): Observable<Conta> {
+readById(id: number): Observable<Cartao> {
   const url = `${this.baseUrl}/${id}`;
-  return this.http.get<Conta>(url).pipe(
+  return this.http.get<Cartao>(url).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-update(conta: Conta): Observable<Conta> {
-  const url = `${this.baseUrl}/${conta.id}`;
-  return this.http.put<Conta>(url, conta).pipe(
+update(cartao: Cartao): Observable<Cartao> {
+  const url = `${this.baseUrl}/${cartao.id}`;
+  return this.http.put<Cartao>(url, cartao).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
-delete(id: number): Observable<Conta> {
+delete(id: number): Observable<Cartao> {
   const url = `${this.baseUrl}/${id}`;
-  return this.http.delete<Conta>(url).pipe(
+  return this.http.delete<Cartao>(url).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
 }
 
 
-create(conta: Conta): Observable<Conta> {
-  return this.http.post<Conta>(this.baseUrl, conta).pipe(
+create(cartao: Cartao): Observable<Cartao> {
+  return this.http.post<Cartao>(this.baseUrl, cartao).pipe(
     map((obj) => obj),
     catchError((e) => this.errorHandler(e))
   );
